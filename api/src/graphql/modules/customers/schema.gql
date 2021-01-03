@@ -21,19 +21,3 @@ type Query {
 	customersByCity(city: String!):[Customer]!
 	customer(id: ID!): Customer!
 }
-
-input CustomerInput {
-	first_name: String!
-	last_name: String!
-	email: String!
-	gender: String!
-	company: String!
-	city: String!
-	title: String!
-}
-
-type Mutation {
-	createCustomer(data: CustomerInput!): Customer!
-	updateCustomer(id: ID!, data: CustomerInput!): Customer!
-	deleteCustomer(id: ID!): Boolean!
-}

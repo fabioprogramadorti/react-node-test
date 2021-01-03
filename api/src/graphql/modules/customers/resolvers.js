@@ -35,14 +35,5 @@ export default {
 
 			return customer
 		}
-	},
-
-	Mutation: {
-		createCustomer: (_, { data }) => Customer.create(data),
-		updateCustomer: (_, { id, data }) => Customer.findOneAndUpdate(id, data, { new: true }),
-		deleteCustomer: async (_, { id }) => {
-			const deleted = await Customer.findByIdAndDelete(id)
-			return !!deleted
-		}
 	}
 }
