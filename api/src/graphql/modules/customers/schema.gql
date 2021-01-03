@@ -1,0 +1,39 @@
+type Customer {
+	_id: ID!
+	first_name: String!
+	last_name: String!
+	email: String!
+	gender: String!
+	company: String!
+	city: String!
+	title: String!
+	lat: String
+	long: String
+}
+
+type Total {
+	city: String!
+	customers_total: Int!
+}
+
+type Query {
+	totalCustomersByCity: [Total]!
+	customersByCity(city: String!):[Customer]!
+	customer(id: ID!): Customer!
+}
+
+input CustomerInput {
+	first_name: String!
+	last_name: String!
+	email: String!
+	gender: String!
+	company: String!
+	city: String!
+	title: String!
+}
+
+type Mutation {
+	createCustomer(data: CustomerInput!): Customer!
+	updateCustomer(id: ID!, data: CustomerInput!): Customer!
+	deleteCustomer(id: ID!): Boolean!
+}
