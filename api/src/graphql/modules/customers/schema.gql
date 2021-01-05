@@ -19,5 +19,5 @@ type Total {
 type Query {
 	totalCustomersByCity: [Total]!
 	customersByCity(city: String!):[Customer]!
-	customer(id: ID!): Customer!
+	customer(id: ID!): Customer
 }

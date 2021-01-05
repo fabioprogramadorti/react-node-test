@@ -24,10 +24,8 @@ export default {
 			})
 		},
 		customersByCity: (_, args) =>  Customer.find({city: args.city}),
-
 		customer: async (_, { id }) => {
 			let customer = await Customer.findById(id)
-
 			var loc = await getLocationByCity(customer.city)
 
 			customer.lat = loc.lat
