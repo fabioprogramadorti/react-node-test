@@ -1,12 +1,14 @@
-import { Component } from 'react'
+import React from 'react'
 
-import Card from './components/Card'
-class App extends Component {
+
+import CustomerDashboard from './screens/CustomerDashboard'
+
+class App extends React.Component {
 
 	state = {
 		customers: [
 			{
-				city: "Warner, NH",
+				city: "New York, NY",
 				customers_total: 20
 			},
 			{
@@ -14,7 +16,7 @@ class App extends Component {
 				customers_total: 20
 			},
 			{
-				city: "Warner, NH",
+				city: "Los Angeles, CA",
 				customers_total: 20
 			},
 		]
@@ -22,15 +24,7 @@ class App extends Component {
 
 	render(){
 		return (
-			<div style={styles.container}>
-				<ul>{
-					this.state.customers.map(customer => 
-						<li>
-							<Card city={customer.city} customersTotal={customer.customers_total} />
-						</li>
-						)
-					}</ul>
-			</div>
+			<CustomerDashboard customers={this.state.customers} />
 		);
 	}
 }
