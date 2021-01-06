@@ -4,19 +4,11 @@ class Card extends Component {
 
 	render(){
 		return (
-			<div style={styles.card}>
+			<div>
 				{this.props.city} <br />
 				{this.props.customersTotal}
 			</div>
 		);
-	}
-}
-
-const styles = {
-	card: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
 	}
 }
 

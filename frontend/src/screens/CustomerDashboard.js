@@ -1,45 +1,28 @@
 import React from 'react'
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link,
-	useParams
-} from 'react-router-dom'
-
+import { useQuery, gql } from '@apollo/client'
 import Card from '../components/Card'
 
-class CusromerList extends React.Component {
+const FEED_QUERY = gql`
+	{
+		totalCustomersByCity { 
+			city
+			customers_total
+		}
+	}
+`
 
-	render(){
-		return (
-			<Router>
-				<div style={styles.container}>
-					<ul>{
-						this.props.customers.map(customer => 
-							<li>
-								<Link to={`/${customer.city}`}>
-									<Card city={customer.city} customersTotal={customer.customers_total} />
-								</Link>
-							</li>
+const CustomerDashboard = () => {
+	const { data } = useQuery(FEED_QUERY)
+
+	return (
+				<div>
+					{ data &&
+						data.totalCustomersByCity.map( byCity => 
+									<Card key={byCity.city} city={byCity.city} customersTotal={byCity.customers_total} /> 
 							)
-						}</ul>
-
-					<Switch>
-						<Route exact path="customer-list/:city" component={CusromerList} />
-					</Switch>
+					}
 				</div>
-			</Router>
 		);
-	}
 }
 
-const styles = {
-	container: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	}
-}
-
-export default CusromerList;
+export default CustomerDashboard;
