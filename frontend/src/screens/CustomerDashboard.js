@@ -12,14 +12,22 @@ const FEED_QUERY = gql`
 `
 
 const CustomerDashboard = () => {
-	const { data } = useQuery(FEED_QUERY)
+	const query = useQuery(FEED_QUERY)
 
 	return (
 				<div>
-					{ data &&
-						data.totalCustomersByCity.map( byCity => 
-									<Card key={byCity.city} city={byCity.city} customersTotal={byCity.customers_total} /> 
+					{ query.data 
+						? query.data.totalCustomersByCity.map( byCity => 
+							<Card key={byCity.city} city={byCity.city} customersTotal={byCity.customers_total} /> 
 							)
+						: <div>
+							{query.error &&
+								<div>
+									<p>{query.error.toString()}</p>
+								</div>
+							}
+						</div>
+
 					}
 				</div>
 		);
