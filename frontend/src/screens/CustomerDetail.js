@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery, gql } from '@apollo/client'
-
+import Map from  '../components/Map'
 
 const CustomersDetail = (props) => {
 	const FEED_QUERY = gql`
@@ -20,14 +20,23 @@ const CustomersDetail = (props) => {
 		}
 	`	
 	
-	const query = useQuery(FEED_QUERY)
-	const customer = query.data.customer
+	const { loading, data } = useQuery(FEED_QUERY)
+	
+
+	if (loading) return <p>Loading ...</p>;
 	return (
 		<div>
-			{customer.first_name}
-			{customer.email}
-			{customer.lat}
-			{customer.long}
+			<div>
+				{data.customer.first_name}
+				{data.customer.email}
+				{data.customer.lat}
+				{data.customer.long}
+			</div>
+			<Map location={{
+					address: data.customer.city,
+					lat: data.customer.lat,
+					lng: data.customer.long
+				}} zoomLevel={17} />
 		</div>
 	)
 }
