@@ -1,8 +1,7 @@
 import React from 'react'
 import { useQuery, gql } from '@apollo/client'
+import { Link } from 'react-router-dom';
 import Card from '../components/Card'
-import { Route, Link } from 'react-router-dom';
-import CustomersList from './CustomersList';
 
 const FEED_QUERY = gql`
 	{
@@ -15,35 +14,31 @@ const FEED_QUERY = gql`
 
 
 const CustomerDashboard = () => {
-	const query = useQuery(FEED_QUERY)
-	
+	const {data, loading, error } = useQuery(FEED_QUERY)
+	if(loading) return <p>...Loading</p>
 	return (
 				<div>
-					{ query.data 
-						? query.data.totalCustomersByCity.map((customerCity, index) => (
-										<div>
-											<Link key={customerCity.city} to={{
-												pathname:`/customers-list/${customerCity.city}`,
-												city: customerCity.city
-											}}
-											>
-												<Card city={customerCity.city} customersTotal={customerCity.customers_total} />
-											</Link>
-											<Route key={index} path='/customers-list/:city' component={CustomersList} />
-										</div>
-									))
+
+					{ data 
+						? data.totalCustomersByCity.map((customerCity, index) => (
+								<Link key={customerCity.city} to={{
+									pathname:`/customers-list`,
+									state: {city: customerCity.city}
+								}}
+								>
+									<Card city={customerCity.city} customersTotal={customerCity.customers_total} />
+								</Link>
+								
+						))
 										
 						: <div>
-								{query.error &&
+								{error &&
 									<div>
-										<p>{query.error.toString()}</p>
+										<p>{error.toString()}</p>
 									</div>
 								}
 							</div>
-
 					}
-						
-
 				</div>
 		);
 }

@@ -2,10 +2,10 @@ import React from 'react'
 import { useQuery, gql } from '@apollo/client'
 import Map from  '../components/Map'
 
-const CustomersDetail = (props) => {
-	const FEED_QUERY = gql`
-		{
-			customer(id:"5ff227d0dbc624f52a1f0262"){
+const CustomersDetail = ({location}) => {
+	const USER_QUERY = gql`
+		query customer($id: ID!){
+			customer(id: $id){
 				_id
 				first_name
 				last_name
@@ -19,11 +19,15 @@ const CustomersDetail = (props) => {
 			}
 		}
 	`	
-	
-	const { loading, data } = useQuery(FEED_QUERY)
+	const userId = location.state.id
+
+	const { loading, data, error} = useQuery(USER_QUERY, {
+		variables: {id: userId}
+	})
 	
 
 	if (loading) return <p>Loading ...</p>;
+	if (error) return <p>{`Error: ${error}`}</p>;
 	return (
 		<div>
 			<div>
