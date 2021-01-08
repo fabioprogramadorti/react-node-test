@@ -5,19 +5,19 @@ import Card from '../components/Card'
 import '../styles/customer-dashboard.css'
 import Loading from '../components/Loading'
 
-const FEED_QUERY = gql`
-	{
-		totalCustomersByCity { 
-			city
-			customers_total
-		}
-	}
-`	
-
-
 const CustomerDashboard = () => {
+	const FEED_QUERY = gql`
+		{
+			totalCustomersByCity { 
+				city
+				customers_total
+			}
+		}
+	`	
 	const {data, loading, error } = useQuery(FEED_QUERY)
+
 	if(loading) return <Loading />
+	
 	return (
 		<div>
 				<h1>Customers by City</h1>

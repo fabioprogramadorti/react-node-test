@@ -13,6 +13,8 @@ import {
   InMemoryCache
 } from '@apollo/client'
 
+import { Auth0Provider } from "@auth0/auth0-react";
+
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000'
 })
@@ -25,11 +27,17 @@ const client = new ApolloClient({
 })
 
 ReactDOM.render(
-  <BrowserRouter>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </BrowserRouter>,
+  <Auth0Provider
+    domain="dev-bjo1lgzg.us.auth0.com"
+    clientId="ZWXX2Rbods3p2WTXRCTh75VhTJPgo93D"
+    redirectUri={window.location.origin}
+  >
+    <BrowserRouter>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </BrowserRouter>
+  </Auth0Provider>,
   document.getElementById('root')
 )
 

@@ -53,18 +53,6 @@ const Header = () => {
                   Home
                 </NavLink>
               </NavItem>
-              {isAuthenticated && (
-                <NavItem>
-                  <NavLink
-                    tag={RouterNavLink}
-                    to="/external-api"
-                    exact
-                    activeClassName="router-link-exact-active"
-                  >
-                    External API
-                  </NavLink>
-                </NavItem>
-              )}
             </Nav>
             <Nav className="d-none d-md-block" navbar>
               {!isAuthenticated && (
@@ -91,14 +79,6 @@ const Header = () => {
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem header>{user.name}</DropdownItem>
-                    <DropdownItem
-                      tag={RouterNavLink}
-                      to="/profile"
-                      className="dropdown-profile"
-                      activeClassName="router-link-exact-active"
-                    >
-                      <FontAwesomeIcon icon="user" className="mr-3" /> Profile
-                    </DropdownItem>
                     <DropdownItem
                       id="qsLogoutBtn"
                       onClick={() => logoutWithRedirect()}
