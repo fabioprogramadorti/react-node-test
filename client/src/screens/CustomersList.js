@@ -3,6 +3,7 @@ import { useQuery, gql } from '@apollo/client'
 import { Link, Redirect } from 'react-router-dom';
 import '../styles/customers-list.css'
 import Loading from '../components/Loading'
+import { Button } from "reactstrap";
 
 const CustomersList = ({location}) => {
 	
@@ -57,7 +58,7 @@ const CustomersList = ({location}) => {
 						isLoadingMore ?
 						<Loading />
 						:
-						<button onClick={ async () => {
+						<Button disabled={!data.customersByCity.hasMore} color='primary' onClick={ async () => {
 								const { cursor } = data.customersByCity
 								setIsLoadingMore(true);
 								await fetchMore({
@@ -76,7 +77,7 @@ const CustomersList = ({location}) => {
 								});
 								setIsLoadingMore(false);
 							}}
-						> Load More </button>
+						> Load More </Button>
 
 					}
 				</div>
