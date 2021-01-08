@@ -7,12 +7,12 @@ class Card extends Component {
 	render(){
 		return (
 
-			<div class="card card--fixedSize">
-				<div class="card__description">
-					<div class="icon fa fa-flask card__descriptionIcon"></div>
-					<div class="card__descriptionText">{this.props.city}</div>
+			<div className="card card--fixedSize">
+				<div className="card__description">
+					<div className="icon fa fa-flask card__descriptionIcon"></div>
+					<div className="card__descriptionText">{this.props.city}</div>
 				</div>
-				<div class="card__number">Total: {this.props.customersTotal}</div>
+				<div className="card__number">Total: {this.props.customersTotal}</div>
 			</div>
 		);
 	}

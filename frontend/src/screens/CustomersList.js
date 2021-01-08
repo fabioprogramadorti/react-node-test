@@ -1,10 +1,11 @@
 import React , { useState } from 'react'
 import { useQuery, gql } from '@apollo/client'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import '../styles/customers-list.css'
 
 const CustomersList = ({location}) => {
-	const CUSTOMERS_BY_CITY_QUERY = gql`
+	
+	const GET_CUSTOMERS_BY_CITY = gql`
 		query customersByCity($city: String!, $after: String, $pageSize: Int) {
 			customersByCity(city: $city, after: $after, pageSize: $pageSize) {
 				cursor
@@ -14,22 +15,23 @@ const CustomersList = ({location}) => {
 					first_name
 					last_name
 				}
-				
-		}
+			}
 	}
 	`	
 	const pageSize = 5
-	const city = location.state.city
+	const city = location.state ? location.state.city : ''
 	const { data, loading, error, fetchMore } = useQuery(
-		CUSTOMERS_BY_CITY_QUERY, {
-		variables: {city, pageSize},
-	})
-	const [isLoadingMore, setIsLoadingMore] = useState(false);
+		GET_CUSTOMERS_BY_CITY, {
+			variables: {city, pageSize},
+		})
+		const [isLoadingMore, setIsLoadingMore] = useState(false);
 
+
+	if(!city) return <Redirect to="/"></Redirect>
 	if(loading) return <p>...Loading</p>
 	if(error) return <p>{`Error ${error}`}</p>
-	console.log(data)
 	return (
+
 		<div>
 			<h1>Customers of {city}</h1>
 				<div className="customer-items">
@@ -54,14 +56,22 @@ const CustomersList = ({location}) => {
 						isLoadingMore ?
 						<p>...Loading</p>
 						:
-						<button onClick={async () => {
+						<button onClick={ async () => {
+								const { cursor } = data.customersByCity
 								setIsLoadingMore(true);
 								await fetchMore({
 									variables: {
 										city, 
 										pageSize,
-										after: data.customersByCity.cursor,
+										after: cursor,
 									},
+									updateQuery: (prev, { fetchMoreResult }) => {
+										fetchMoreResult.customersByCity.customers = [
+											...prev.customersByCity.customers,
+											...fetchMoreResult.customersByCity.customers
+										]
+										return fetchMoreResult
+									}
 								});
 								setIsLoadingMore(false);
 							}}
