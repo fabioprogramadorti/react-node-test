@@ -23,21 +23,24 @@ export default {
 				return customer
 			})
 		},
-		customersByCity: async(_, {city, pageSize=20, after}) =>  {
+		customersByCity: async(_, {city, pageSize=20, after}) => {
 			const customersByCity = await Customer.find({city: city})
-
-			customersByCity.reverse()
+			const results = customersByCity.map(customer => {
+				customer._id = customer._id.toString()
+				return customer
+			})
 			const customers = paginatedResults({
 				after,
 				pageSize,
-				results: customersByCity
+				results
 			})
+			
 			return {
 				customers,
-				cursor: customers.length ? customers[customers.length - 1].cursor : null,
+				cursor: customers.length ? customers[customers.length - 1].id : null,
 				hasMore: customers.length 
-				? customers[customers.length - 1].cursor !== 
-					customersByCity[customersByCity.length - 1].cursor
+				? customers[customers.length - 1].id !== 
+					customersByCity[customersByCity.length - 1].id
 				: false
 			}
 		},
