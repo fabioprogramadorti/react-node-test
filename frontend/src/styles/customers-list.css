@@ -1,0 +1,11 @@
+.customer-items {
+	overflow: hidden;
+}
+
+.customer-items .customer-item {
+	width: 25%;
+	box-sizing: border-box;
+	color: #171e42;
+	padding: 10px;
+	justify-content: center;
+}

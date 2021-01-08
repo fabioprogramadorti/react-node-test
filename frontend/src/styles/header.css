@@ -1,0 +1,35 @@
+nav {
+	background: #222;
+	padding: 0 15px;
+}
+
+
+
+.menu,
+.submenu {
+	list-style-type: none;
+}
+
+.logo {
+	font-size: 20px;
+	padding: 7.5px 10px 7.5px 0;
+}
+
+.item {
+	padding: 10px;
+}
+
+.item.button {
+	padding: 9px 5px;
+}
+
+.item a {
+	color: white;
+	text-decoration: none;
+}
+
+.item:not(.button) a:hover,
+.item a:hover::after {
+	color: #ccc;
+}
+

@@ -1,0 +1,42 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #CAD0D2;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.card__description {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 15px 0;
+}
+
+.card__descriptionIcon {
+	font-size: 32px;
+	margin-bottom: 10px;
+}
+
+.card__descriptionText {
+	color: #57727C;
+	font-size: 12px;
+	text-align: center;
+	max-width: calc(100% - 30px);
+}
+
+.card__number {
+	text-align: center;
+	color: #57727C;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 5px 15px;
+	border-top: 1px solid #D7DBDD;
+	background-color: #EEF3F5;
+}
+
+.card--fixedSize {
+	max-width: 120px;
+	max-height: 150px;
+}
