@@ -2,6 +2,7 @@ import React , { useState } from 'react'
 import { useQuery, gql } from '@apollo/client'
 import { Link, Redirect } from 'react-router-dom';
 import '../styles/customers-list.css'
+import Loading from '../components/Loading'
 
 const CustomersList = ({location}) => {
 	
@@ -28,7 +29,7 @@ const CustomersList = ({location}) => {
 
 
 	if(!city) return <Redirect to="/"></Redirect>
-	if(loading) return <p>...Loading</p>
+	if(loading) return <Loading />
 	if(error) return <p>{`Error ${error}`}</p>
 	return (
 
@@ -54,7 +55,7 @@ const CustomersList = ({location}) => {
 						data.customersByCity &&
 						data.customersByCity.hasMore &&
 						isLoadingMore ?
-						<p>...Loading</p>
+						<Loading />
 						:
 						<button onClick={ async () => {
 								const { cursor } = data.customersByCity

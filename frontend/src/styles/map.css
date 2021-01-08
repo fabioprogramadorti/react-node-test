@@ -28,8 +28,8 @@
 
 @media screen and (min-width: 799px) {
 	.google-map {
-		height: 80vh;
-		width: 50%;
+		height: 60vh;
+		width: 100%;
 		position: absolute;
 	}
 
@@ -39,7 +39,7 @@
 	}
 
 	.pin {
-		width: 10vw;
+		width: 8vw;
 	}
 
 	.pin-icon {
