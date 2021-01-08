@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery, gql } from '@apollo/client'
 import { Link } from 'react-router-dom';
 import Card from '../components/Card'
+import '../styles/customer-dashboard.css'
 
 const FEED_QUERY = gql`
 	{
@@ -17,8 +18,9 @@ const CustomerDashboard = () => {
 	const {data, loading, error } = useQuery(FEED_QUERY)
 	if(loading) return <p>...Loading</p>
 	return (
-				<div>
-
+		<div>
+				<h1>Customers by City</h1>
+				<div className='flex-container cards'>
 					{ data 
 						? data.totalCustomersByCity.map((customerCity, index) => (
 								<Link key={customerCity.city} to={{
@@ -30,8 +32,8 @@ const CustomerDashboard = () => {
 								</Link>
 								
 						))
-										
-						: <div>
+								
+					: <div>
 								{error &&
 									<div>
 										<p>{error.toString()}</p>
@@ -40,6 +42,8 @@ const CustomerDashboard = () => {
 							</div>
 					}
 				</div>
+		</div>
+
 		);
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery, gql } from '@apollo/client'
 import { Link } from 'react-router-dom';
+import '../styles/customers-list.css'
 
 const CustomersList = ({location}) => {
 	const CUSTOMERS_BY_CITY_QUERY = gql`
@@ -9,9 +10,6 @@ const CustomersList = ({location}) => {
 				_id
 				first_name
 				last_name
-				email
-				company
-				gender
 		}
 	}
 	`	
@@ -27,22 +25,20 @@ const CustomersList = ({location}) => {
 	return (
 		<div>
 			<h1>Customers of {city}</h1>
-			
-				{data.customersByCity.map(customer =>
-				<Link key={customer._id} to={{
-									pathname:`/customer`,
-									state: {id: customer._id}
-								}}
-								>
-							<div>
-								Nome: {customer.firs_name} {customer.last_name} <br/>
-								email: {customer.email} <br />
-								genero: {customer.gender} <br/>
-								empresa: {customer.company} <br/>
-							</div>
+				<div className="customer-items">
+					{data.customersByCity.map(customer =>
+					<Link key={customer._id} to={{
+										pathname:`/customer`,
+										state: {id: customer._id}
+									}}
+									>
+								<div className="customer-item">
+									{customer.first_name} {customer.last_name} <br/>
+								</div>
 
-								</Link>
-				)}
+									</Link>
+					)}
+				</div>
 		</div>
 	)
 }

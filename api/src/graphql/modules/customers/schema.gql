@@ -18,6 +18,12 @@ type Total {
 
 type Query {
 	totalCustomersByCity: [Total]!
-	customersByCity(city: String!):[Customer]!
 	customer(id: ID!): Customer
+	customersByCity(city: String!, pageSize: Int, after: String):CustomerByCityConnection!
+}
+
+type CustomerByCityConnection {
+  cursor: String!
+  hasMore: Boolean!
+  customers: [Customer]!
 }
