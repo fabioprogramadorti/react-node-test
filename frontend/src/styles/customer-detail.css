@@ -1,0 +1,43 @@
+table {
+	position: absolute;
+	top: 35%;
+	left: 75%;
+	width: 600px;
+	transition: all 0.2s ease;
+
+	transform: translateX(-50%) translateY(-50%);
+
+	background: #fff;
+
+	padding: 20px;
+}
+
+.name {
+	font-size: 30px;
+	border-bottom: 2px solid #888;
+	margin-bottom: 20px;
+}
+
+.name:first-letter {
+	font-size: 300%;
+}
+
+.label {
+	width: 70px;
+	font-weight: bold;
+}
+
+.label,
+.phone,
+.mobile,
+.email {
+	display: inline-block;
+}
+
+.details-td {
+	border-right: 1px solid #eee;
+	white-space: nowrap;
+
+	padding: 20px;
+	padding-right: 30px;
+}
