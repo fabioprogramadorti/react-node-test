@@ -4,6 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 import '../styles/customers-list.css'
 import Loading from '../components/Loading'
 import Button from "react-bootstrap/Button";
+import ListGroup from 'react-bootstrap/ListGroup'
+
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 const CustomersList = ({location}) => {
@@ -37,29 +39,40 @@ const CustomersList = ({location}) => {
 
 		<div>
 			<h1>Customers of {city}</h1>
-				<div className="customer-items">
-					{
+				<div className="container">
+					<ListGroup variant="flush">
+						{
 						data.customersByCity &&
 						data.customersByCity.customers &&
 						data.customersByCity.customers.map(customer =>
-							<Link key={customer._id} to={{
-										pathname:`/customer`,
-										state: {id: customer._id}
-									}}
-									>
-								<div className="customer-item">
-									{customer.first_name} {customer.last_name} <br/>
-								</div>
 
-							</Link>
+							<ListGroup.Item>
+								<Link key={customer._id} to={{
+									pathname:`/customer`,
+									state: {id: customer._id}
+								}}
+								>
+										{customer.first_name} {customer.last_name} <br/>
+									
+
+								</Link>
+							</ListGroup.Item>
 					)}
+						
+					</ListGroup>
+					
 					{
 						data.customersByCity &&
 						data.customersByCity.hasMore &&
 						isLoadingMore ?
 						<Loading />
 						:
-						<Button disabled={!data.customersByCity.hasMore} color='primary' onClick={ async () => {
+						<Button style={{
+							position:'absolute',
+							top: '17%',
+							left: '75%'
+							
+						}} disabled={!data.customersByCity.hasMore} color='primary' onClick={ async () => {
 								const { cursor } = data.customersByCity
 								setIsLoadingMore(true);
 								await fetchMore({
@@ -79,7 +92,6 @@ const CustomersList = ({location}) => {
 								setIsLoadingMore(false);
 							}}
 						> Load More </Button>
-
 					}
 				</div>
 		</div>
