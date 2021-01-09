@@ -68,9 +68,9 @@ const CustomersList = ({location}) => {
 						<Loading />
 						:
 						<Button style={{
-							position:'absolute',
-							top: '17%',
-							left: '75%'
+							position:'fixed',
+							top: '15%',
+							left: '70%'
 							
 						}} disabled={!data.customersByCity.hasMore} color='primary' onClick={ async () => {
 								const { cursor } = data.customersByCity
