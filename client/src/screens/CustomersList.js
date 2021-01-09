@@ -3,7 +3,7 @@ import { useQuery, gql } from '@apollo/client'
 import { Link, Redirect } from 'react-router-dom';
 import '../styles/customers-list.css'
 import Loading from '../components/Loading'
-import { Button } from "reactstrap";
+import Button from "react-bootstrap/Button";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 const CustomersList = ({location}) => {

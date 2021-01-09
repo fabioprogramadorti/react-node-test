@@ -1,19 +1,21 @@
 import { Component } from 'react'
-import '../styles/card.css'
 
 
 class Card extends Component {
 
 	render(){
 		return (
-
-			<div className="card card--fixedSize">
-				<div className="card__description">
-					<div className="icon fa fa-flask card__descriptionIcon"></div>
-					<div className="card__descriptionText">{this.props.city}</div>
+			<div class="row">
+				<div class="col-sm-6">
+						<div className="card text-center" style={{width: '13rem', marginBottom: '10px'}}>
+							<div className="card-header">{this.props.city}</div>
+							<div class="card-body">
+								<h6 class="card-title mb-2 text-muted">{this.props.customersTotal} customers</h6>
+							</div>
+						</div>
 				</div>
-				<div className="card__number">Total: {this.props.customersTotal}</div>
 			</div>
+			
 		);
 	}
 }

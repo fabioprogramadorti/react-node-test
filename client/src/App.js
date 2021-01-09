@@ -4,7 +4,7 @@ import CustomerDetail from './screens/CustomerDetail'
 import CustomersList from './screens/CustomersList'
 import Header from './components/Header'
 import { Switch, Route } from 'react-router-dom';
-import { Container } from "reactstrap";
+import { Container } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from './components/Loading'
 
