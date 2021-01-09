@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Card from '../components/Card'
 import '../styles/customer-dashboard.css'
 import Loading from '../components/Loading'
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 const CustomerDashboard = () => {
 	const FEED_QUERY = gql`
@@ -48,4 +49,6 @@ const CustomerDashboard = () => {
 		);
 }
 
-export default CustomerDashboard;
+export default withAuthenticationRequired(CustomerDashboard, {
+  onRedirecting: () => <Loading />,
+});

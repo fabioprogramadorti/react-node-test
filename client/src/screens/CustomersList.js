@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import '../styles/customers-list.css'
 import Loading from '../components/Loading'
 import { Button } from "reactstrap";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 const CustomersList = ({location}) => {
 	
@@ -84,5 +85,7 @@ const CustomersList = ({location}) => {
 		</div>
 	)
 }
+export default withAuthenticationRequired(CustomersList, {
+  onRedirecting: () => <Loading />,
+});
 
-export default CustomersList;

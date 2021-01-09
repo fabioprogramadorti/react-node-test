@@ -5,6 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Auth0ProviderWithHistory from './auth/auth0-provider-with-history'
 
 import {
   ApolloProvider,
@@ -13,7 +14,6 @@ import {
   InMemoryCache
 } from '@apollo/client'
 
-import { Auth0Provider } from "@auth0/auth0-react";
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000'
@@ -27,17 +27,13 @@ const client = new ApolloClient({
 })
 
 ReactDOM.render(
-  <Auth0Provider
-    domain="dev-bjo1lgzg.us.auth0.com"
-    clientId="ZWXX2Rbods3p2WTXRCTh75VhTJPgo93D"
-    redirectUri={window.location.origin}
-  >
-    <BrowserRouter>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
-    </BrowserRouter>
-  </Auth0Provider>,
+  <BrowserRouter>
+    <Auth0ProviderWithHistory>
+        <ApolloProvider client={client}>
+          <App />
+        </ApolloProvider>
+    </Auth0ProviderWithHistory>
+  </BrowserRouter>,
   document.getElementById('root')
 )
 

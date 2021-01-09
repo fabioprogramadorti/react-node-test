@@ -4,7 +4,7 @@ import Map from  '../components/Map'
 import '../styles/customer-detail.css'
 import { Redirect } from 'react-router-dom';
 import Loading from '../components/Loading'
-
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 const CustomersDetail = ({location}) => {
 	const USER_QUERY = gql`
@@ -55,4 +55,6 @@ const CustomersDetail = ({location}) => {
 	)
 }
 
-export default CustomersDetail;
+export default withAuthenticationRequired(CustomersDetail, {
+  onRedirecting: () => <Loading />,
+});
