@@ -1,7 +1,7 @@
 {
 	"mongodb": {
 		"server": "localhost:27017",
-		"database": "",
+		"database": "graphql",
 		"user": null,
 		"password": null
 	}

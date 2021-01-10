@@ -4,18 +4,24 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "npx nodemon --exec babel-node src/index.js -e js,gql"
+    "dev": "npx nodemon --exec babel-node src/index.js -e js,gql",
+    "test": "mocha tests -t 10000"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
-    "@babel/preset-env": "^7.12.11"
+    "@babel/preset-env": "^7.12.11",
+    "easygraphql-tester": "^5.1.6",
+    "mocha": "^8.2.1"
   },
   "dependencies": {
+    "apollo-fetch": "^0.7.0",
+    "apollo-link-http": "^1.5.17",
     "apollo-server": "^2.19.1",
     "axios": "^0.21.1",
     "bluebird": "^3.7.2",
+    "isomorphic-fetch": "^3.0.0",
     "merge-graphql-schemas": "^1.7.8",
     "mongoose": "^5.11.9"
   }

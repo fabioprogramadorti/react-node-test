@@ -17,7 +17,7 @@ const prepareConnectionString = (config)  => {
 }
 
 function dbInit () {
-	console.log(mongodbConfig)
+
 	const options = {
 		promiseLibrary: bluebird,
 		useNewUrlParser: true,
@@ -30,7 +30,7 @@ function dbInit () {
 	})
 	.catch(err => {
 			console.log(err.message)
-			console.log('An error occurr on the database connection: ' + connectionString)
+			console.log('An error occurred on the database connection: ' + connectionString)
 		})
 }
 
