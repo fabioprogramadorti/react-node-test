@@ -1,4 +1,4 @@
-import Customer from '../../../models/customer'
+import Customer from '../../../mongodb/models/customer'
 import getLocationByCity from './googleMaps.service'
 import paginatedResults from './utils'
 
