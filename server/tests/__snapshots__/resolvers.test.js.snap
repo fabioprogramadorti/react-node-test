@@ -2,15 +2,15 @@
 
 exports[`Get customer by ID 1`] = `
 Object {
-  "_id": "5f18c089-0ac5-4f70-a701-1d1ba3df4c7d",
+  "_id": "fa9cea31-5df7-4224-af11-32ffe8390714",
   "city": "Hello World",
   "company": "Hello World",
   "email": "Hello World",
   "first_name": "Hello World",
   "gender": "Hello World",
   "last_name": "Hello World",
-  "lat": -45.58768461764111,
-  "long": -56.96028137607496,
+  "lat": -99.91888169282296,
+  "long": 48.90336925743779,
   "title": "Hello World",
 }
 `;
@@ -20,15 +20,15 @@ Object {
   "cursor": "Hello World",
   "customers": Array [
     Object {
-      "_id": "f0406db0-6940-4746-a4c0-0d2adb8cadd9",
+      "_id": "4de5ad7e-fc6e-464f-8e2d-54d2ccd619b0",
       "first_name": "Hello World",
     },
     Object {
-      "_id": "33fc4b01-7645-4337-8cab-6b7e2c29ff1c",
+      "_id": "0fe5c2ba-4401-49c7-80fb-2a657678bf94",
       "first_name": "Hello World",
     },
   ],
-  "hasMore": true,
+  "hasMore": false,
 }
 `;
 
@@ -36,11 +36,11 @@ exports[`Get number of customers by city 1`] = `
 Array [
   Object {
     "city": "Hello World",
-    "customers_total": -73,
+    "customers_total": 74,
   },
   Object {
     "city": "Hello World",
-    "customers_total": 54,
+    "customers_total": -79,
   },
 ]
 `;
