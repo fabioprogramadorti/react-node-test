@@ -7,8 +7,8 @@ type Customer {
 	company: String!
 	city: String!
 	title: String!
-	lat: String
-	long: String
+	lat: Float
+	long: Float
 }
 
 type Total {

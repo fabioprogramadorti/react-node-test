@@ -1,14 +1,16 @@
 const EasyGraphQLTester = require('easygraphql-tester')
 const fs = require('fs')
-const schemaCode = fs.readFileSync(__dirname + "/../src/graphql/modules/customers/schema.gql","utf8");
+const path = require('path')
+const schemaCode = fs.readFileSync(
+	path.join(__dirname, "../src/graphql/modules/customers/schema.gql"),"utf8");
 
 let tester
 describe("Test Schema, Queries and Mutation", () => {
-  before(() => {
+  beforeAll(() => {
     tester = new EasyGraphQLTester(schemaCode);
     //just to make sure schema comes through swiftly
     //console.log(util.inspect(tester))
-  });
+  })
 	it("Should pass with a valid customer query", () => {
 
 		const customerQuery = `
@@ -85,7 +87,7 @@ describe("Test Schema, Queries and Mutation", () => {
 
 		const customerByCity = `
 		{
-			customersByCity(city: "", pageSize:1, after: ""){
+			customersByCity(city: "Some City", pageSize:1, after: ""){
 				cursor
 				hasMore
 				customers{

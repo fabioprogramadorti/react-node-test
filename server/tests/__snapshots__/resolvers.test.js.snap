@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Get customer by ID 1`] = `
+Object {
+  "_id": "5f18c089-0ac5-4f70-a701-1d1ba3df4c7d",
+  "city": "Hello World",
+  "company": "Hello World",
+  "email": "Hello World",
+  "first_name": "Hello World",
+  "gender": "Hello World",
+  "last_name": "Hello World",
+  "lat": -45.58768461764111,
+  "long": -56.96028137607496,
+  "title": "Hello World",
+}
+`;
+
+exports[`Get customers by city 1`] = `
+Object {
+  "cursor": "Hello World",
+  "customers": Array [
+    Object {
+      "_id": "f0406db0-6940-4746-a4c0-0d2adb8cadd9",
+      "first_name": "Hello World",
+    },
+    Object {
+      "_id": "33fc4b01-7645-4337-8cab-6b7e2c29ff1c",
+      "first_name": "Hello World",
+    },
+  ],
+  "hasMore": true,
+}
+`;
+
+exports[`Get number of customers by city 1`] = `
+Array [
+  Object {
+    "city": "Hello World",
+    "customers_total": -73,
+  },
+  Object {
+    "city": "Hello World",
+    "customers_total": 54,
+  },
+]
+`;
