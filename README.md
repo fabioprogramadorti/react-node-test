@@ -32,6 +32,8 @@ Na pasta rais do projeto rode o seguinte comando
 docker-compose up --build
 
 ```
+- O client estará em *http://localhost:3000*
+- O graphql playground estará em *http://localhost:4000*
 ### :microscope: Testando
 Para realizar os testes deve estar instalado localmente o gerenciador de pacotes do -[NPM](https://www.npmjs.com/) ou do -[YARN](https://yarnpkg.com/)
 
