@@ -5,15 +5,12 @@ import { mongodb as mongodbConfig} from '../../config/mongodb-config.json'
 //const mongodbConfig = require('../../config/mongodb-config.json').mongodb
 
 const prepareConnectionString = (config)  => {
-	var connectionString = 'mongodb://';
 
-	if (config.user) {
-			connectionString += config.user + ':' + config.password + '@';
-	}
-
-	connectionString += config.server + '/' + config.database;
-
-	return connectionString;
+	// connectionString += config.server + '/' + config.database + '?retryWrites=true&w=majority';
+	// mongodb+srv://natan_2020:<password>@cluster0.f1jk7.mongodb.net/<dbname>?retryWrites=true&w=majority
+	// mongodb+srv://natan_2020:natan_2020@
+	// 'mongodb+srv://natan_2020:senha123@cluster0.f1jk7.mongodb.net/graphql'
+	return 'mongodb+srv://natan_2020:senha123@cluster0.f1jk7.mongodb.net/graphql';
 }
 
 function dbInit () {

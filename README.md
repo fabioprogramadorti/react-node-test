@@ -7,7 +7,7 @@
 
 ## 💻 Sobre o projeto
 
- O projeto é capaz de receber denuncias através de uma API, salvar as informações passadas e reenviar ao cliente com o endereço correspondente as coordenadas geográficas enviadas na requisição
+ 
 
 ---
 

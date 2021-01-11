@@ -1,8 +1,8 @@
 {
 	"mongodb": {
-		"server": "localhost:27017",
+		"server": "@cluster0.f1jk7.mongodb.net/",
 		"database": "graphql",
-		"user": "root",
-		"password": ""
+		"user": "natan_2020",
+		"password": "senha123"
 	}
 }
