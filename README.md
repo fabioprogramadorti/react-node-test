@@ -7,7 +7,7 @@
 
 ## 💻 Sobre o projeto
 
- 
+ Este projeto é feito utilizando React, Mongodb e o servidor Apollo. A api utiliza Graphql para as requests. A aplicação se utiliza do Mongo Cloud como servidor de banco de dados. Além disso ela utiliza os serviços de geocode da API do Google Maps. Os testes rodam usando Jest.
 
 ---
 
@@ -17,39 +17,28 @@
 
 Antes de começar, você vai precisar ter instaladas em sua máquina as seguintes ferramentas:
 
-- [Git](https://git-scm.com)
-- [Node.js](https://nodejs.org/en/)
-- [MongoDB](https://www.mongodb.com/try/download/community)
+- [Docker](https://www.docker.com/)
+- [Docker-compose](https://docs.docker.com/compose/install/)
 
-Após a instalação do **Mongodb** inicie o serciço do banco de dados.
 
 ### 🎲 Rodando a aplicação
+A aplicação roda a partir de um comando único.
+
+Na pasta rais do projeto rode o seguinte comando
 
 ```bash
 
-# Clone este repositório
-$ git clone https://github.com/fabioprogramadorti/react-node-test.git
+# Este comando instalará as dependências e vai subir o client e o server
+docker-compose up --build
 
-# Instale as dependências do server
-cd server
-$ yarn
-
-# Execute a aplicação
-$ yarn start
-```
-```bash
-
-# Instale as dependências do client
-cd client
-$ yarn
-
-# Execute a aplicação
-$ yarn start
 ```
 ### :microscope: Testando
+Para realizar os testes deve estar instalado localmente o gerenciador de pacotes do -[NPM](https://www.npmjs.com/) ou do -[YARN](https://yarnpkg.com/)
+
 ```bash
 # Dentro das respectivas pastas
-$ yarn test
+$ npm test 
+# $ yarn test #como altenativa
 ```
 
 ---
