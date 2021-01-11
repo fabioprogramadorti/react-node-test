@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "npx nodemon --exec babel-node src/index.js -e js,gql",
+    "start": "npx nodemon --exec babel-node src/index.js -e js,gql",
     "test": "jest -u"
   },
   "devDependencies": {
